@@ -42,6 +42,10 @@ function advancedinvoice_upgrade($vars) {
 
 function advancedinvoice_output($vars) {
 
+    if ($_GET["view"] == "invoices"){
+        advancedinvoice_showinvoices();
+    }
+function advancedinvoice_showinvoices(){
     $command = "getclients";
     $getclients = localAPI($command,$values);
     //echo '<pre>';
@@ -76,6 +80,11 @@ function advancedinvoice_output($vars) {
     $table->addCell('edit', '', 'header');
 
     for($items = 0; $items < count($getinv); $items++){
+        $d = date ( $format, strtotime ( '90 days' ) );
+        if (strtotime($getinv[$items]['duedate']) > $d)
+        {
+            echo $getinv[$items]['invoiceid']. "is older than 90 days ";
+        }
         if (count($getinv[$items]['items']['item']) > 1){
             for($item = 0; $item < count($getinv[$items]['items']['item']); $item++){
                if (empty($getinv[$items]['items']['item'][$item]['type']) && $type != 'Manual Line Item'){
