@@ -122,17 +122,6 @@ function advancedinvoice_output($vars) {
             $table->addCell($getinv[$items]['status']);
             $table->addCell($linkopen . "<img src=\"images/edit.gif\" width=\"16\" height=\"16\" border=\"0\" alt=\"Edit\">");
             //$table->addCell();
-            $table->addRow(
-                array("<input type=\"checkbox\" name=\"selectedinvoices[]\" value=\"" . $getinv[$items]['invoiceid'] . "\" class=\"checkall\">", 
-                $linkopen . $getinv[$items]['invoiceid'] . $linkclose, 'clientname', 
-                $getinv[$items]['date'], 
-                $getinv[$items]['duedate'], "<a href=\"invoices.php?action=invtooltip&id=" . $getinv[$items]['invoiceid'] . "&userid=" . "blank" . "test" . "\" class=\"invtooltip\" lang=\"\">" . "" . "</a>", 
-
-                $type, 
-                $getinv[$items]['status'], 
-                $linkopen . "<img src=\"images/edit.gif\" width=\"16\" height=\"16\" border=\"0\" alt=\"Edit\">" . 
-                $linkclose, "<a href=\"#\" onClick=\"doDelete('" . $getinv[$items]['invoiceid'] . "');return false\"><img src=\"images/delete.gif\" width=\"16\" height=\"16\" border=\"0\" alt=\"Delete\"></a>"));
-    $type = "";
     }
     echo $table->display();
     //var_dump($getinv);
